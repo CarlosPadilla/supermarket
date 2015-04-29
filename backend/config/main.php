@@ -10,11 +10,6 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'urlManager' => array(
-        'urlFormat'=>'path',
-        'showScriptName'=>false,
-        'caseSensitive'=>false,
-    ),
     'modules' => [],
     'components' => [
         'user' => [
