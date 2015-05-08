@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\InventarySearch */
+/* @var $searchModel common\models\InventarySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Inventaries');
@@ -27,8 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'unit_number',
-            'acquire_date',
-            'expire_date',
+            array(
+                'attribute' => 'acquire_date',
+                'format' => 'DATE',
+            ),
+            array(
+                'attribute' => 'expire_date',
+                'format' => 'DATE',
+            ),
+            // 'expire_date',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

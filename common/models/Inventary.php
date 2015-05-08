@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -40,9 +40,9 @@ class Inventary extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'unit_number' => Yii::t('app', 'Unit Number'),
-            'acquire_date' => Yii::t('app', 'Acquire Date'),
-            'expire_date' => Yii::t('app', 'Expire Date'),
+            'unit_number' => Yii::t('app', 'Numero de unidades'),
+            'acquire_date' => Yii::t('app', 'Fecha de compra'),
+            'expire_date' => Yii::t('app', 'caducidad'),
         ];
     }
 }

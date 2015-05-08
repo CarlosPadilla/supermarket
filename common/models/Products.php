@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -43,9 +43,10 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description'),
-            'stock' => Yii::t('app', 'Stock'),
+            'name' => Yii::t('app', 'Nombre'),
+            'description' => Yii::t('app', 'Descripcion'),
+            'stock' => Yii::t('app', 'Existencia'),
+            'price' => yii::t('app', 'Precio')
         ];
     }
 

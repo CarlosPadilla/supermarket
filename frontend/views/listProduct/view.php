@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ListProduct */
+/* @var $model common\models\ListProduct */
 
 $this->title = $model->id_product;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'List Products'), 'url' => ['index']];

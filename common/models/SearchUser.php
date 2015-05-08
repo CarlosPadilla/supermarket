@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Transactions;
+use common\models\User;
 
 /**
- * TransactionsSearch represents the model behind the search form about `app\models\Transactions`.
+ * searchUser represents the model behind the search form about `common\models\User`.
  */
-class TransactionsSearch extends Transactions
+class SearchUser extends User
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class TransactionsSearch extends Transactions
     public function rules()
     {
         return [
-            [['id', 'total', 'is_venta'], 'integer'],
+            [['id', 'status', 'created_at', 'updated_at', 'id_rol'], 'integer'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class TransactionsSearch extends Transactions
      */
     public function search($params)
     {
-        $query = Transactions::find();
+        $query = User::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,9 +57,17 @@ class TransactionsSearch extends Transactions
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'total' => $this->total,
-            'is_venta' => $this->is_venta,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'id_rol' => $this->id_rol,
         ]);
+        $query->joinWith(['roles']);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
+            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }

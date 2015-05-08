@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\ListProduct;
+use common\models\Inventary;
 
 /**
- * ListProductSearch represents the model behind the search form about `app\models\ListProduct`.
+ * InventarySearch represents the model behind the search form about `app\models\Inventary`.
  */
-class ListProductSearch extends ListProduct
+class InventarySearch extends Inventary
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class ListProductSearch extends ListProduct
     public function rules()
     {
         return [
-            [['id_product', 'id_transaction'], 'integer'],
+            [['id', 'unit_number'], 'integer'],
+            [['acquire_date', 'expire_date'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class ListProductSearch extends ListProduct
      */
     public function search($params)
     {
-        $query = ListProduct::find();
+        $query = Inventary::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,8 +56,10 @@ class ListProductSearch extends ListProduct
         }
 
         $query->andFilterWhere([
-            'id_product' => $this->id_product,
-            'id_transaction' => $this->id_transaction,
+            'id' => $this->id,
+            'unit_number' => $this->unit_number,
+            'acquire_date' => $this->acquire_date,
+            'expire_date' => $this->expire_date,
         ]);
 
         return $dataProvider;

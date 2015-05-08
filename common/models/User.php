@@ -52,6 +52,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            // ['id_role', 'exist', 'targetAttribute' => 'a2'],
         ];
     }
 
@@ -189,7 +190,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-     public function getIdRol()
+     public function getRoles()
     {
         return $this->hasOne(Roles::className(), ['id' => 'id_rol']);
     }

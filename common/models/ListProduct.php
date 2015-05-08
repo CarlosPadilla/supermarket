@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -40,8 +40,8 @@ class ListProduct extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_product' => Yii::t('app', 'Id Product'),
-            'id_transaction' => Yii::t('app', 'Id Transaction'),
+            'id_product' => Yii::t('app', 'Producto'),
+            'id_transaction' => Yii::t('app', 'Transaccion'),
         ];
     }
 

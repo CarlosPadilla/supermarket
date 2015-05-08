@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\TransactionsSearch */
+/* @var $searchModel common\models\TransactionsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Transactions');
@@ -26,11 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'total',
-            'is_venta',
+            array(
+                'attribute' => 'total',
+                'format' => 'currency',
+            ),
+            array(
+                'attribute' => 'is_venta',
+                'format' => 'raw',
+                'value' => function($value,$key)
+                {
+                    return $value->is_venta? "Venta" : "Compra";
+                },
+            ),
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);?>
 
 </div>

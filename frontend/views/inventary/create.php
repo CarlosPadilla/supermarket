@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Inventary */
+/* @var $model common\models\Inventary */
 
 $this->title = Yii::t('app', 'Create Inventary');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Inventaries'), 'url' => ['index']];

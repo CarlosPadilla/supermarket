@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\ListProduct;
-use app\models\ListProductSearch;
+use common\models\ListProduct;
+use common\models\ListProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

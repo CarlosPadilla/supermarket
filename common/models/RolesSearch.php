@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Products;
+use common\models\Roles;
 
 /**
- * ProductsSearch represents the model behind the search form about `app\models\Products`.
+ * RolesSearch represents the model behind the search form about `app\models\Roles`.
  */
-class ProductsSearch extends Products
+class RolesSearch extends Roles
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ProductsSearch extends Products
     public function rules()
     {
         return [
-            [['id', 'stock'], 'integer'],
-            [['name', 'description'], 'safe'],
+            [['id'], 'integer'],
+            [['role_name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ProductsSearch extends Products
      */
     public function search($params)
     {
-        $query = Products::find();
+        $query = Roles::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,11 +57,9 @@ class ProductsSearch extends Products
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'stock' => $this->stock,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'role_name', $this->role_name]);
 
         return $dataProvider;
     }

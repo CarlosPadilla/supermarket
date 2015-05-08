@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Inventary;
+use common\models\Transactions;
 
 /**
- * InventarySearch represents the model behind the search form about `app\models\Inventary`.
+ * TransactionsSearch represents the model behind the search form about `app\models\Transactions`.
  */
-class InventarySearch extends Inventary
+class TransactionsSearch extends Transactions
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class InventarySearch extends Inventary
     public function rules()
     {
         return [
-            [['id', 'unit_number'], 'integer'],
-            [['acquire_date', 'expire_date'], 'safe'],
+            [['id', 'total', 'is_venta'], 'integer'],
         ];
     }
 
@@ -41,7 +40,7 @@ class InventarySearch extends Inventary
      */
     public function search($params)
     {
-        $query = Inventary::find();
+        $query = Transactions::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,9 +56,8 @@ class InventarySearch extends Inventary
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'unit_number' => $this->unit_number,
-            'acquire_date' => $this->acquire_date,
-            'expire_date' => $this->expire_date,
+            'total' => $this->total,
+            'is_venta' => $this->is_venta,
         ]);
 
         return $dataProvider;

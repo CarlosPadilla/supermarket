@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -41,7 +41,7 @@ class Transactions extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'total' => Yii::t('app', 'Total'),
-            'is_venta' => Yii::t('app', 'Is Venta'),
+            'is_venta' => Yii::t('app', 'Tipo de transaccion'),
         ];
     }
 

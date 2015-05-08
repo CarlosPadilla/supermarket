@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -39,7 +39,7 @@ class Roles extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'role_name' => Yii::t('app', 'Role Name'),
+            'role_name' => Yii::t('app', 'Tipo de usuario'),
         ];
     }
 
