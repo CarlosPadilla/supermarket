@@ -1,18 +1,18 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-$this->title = 'My Yii Application';
+$this->title = 'SuperMarket';
 ?>
 <div class="site-index">
 
 	<div class="jumbotron">
-		<h1>Welcome!</h1>
+		<h1>Bienvenido!</h1>
 <?php if (!Yii::$app->user->isGuest): ?>
 	<div class="form-group">
-		<?= Html::a(Yii::t('app', 'Vender'), ['Vender'], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a(Yii::t('app', 'Vender'), ['store'], ['class' => 'btn btn-primary']) ?>
 	</div>
 <?php else: ?>
-		<p class="lead">Yey...</p>
+		<p class="lead">Inicia sesion para comenzar</p>
 			 <?php endif;?>
 
 	</div>

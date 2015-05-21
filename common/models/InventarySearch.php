@@ -18,7 +18,7 @@ class InventarySearch extends Inventary
     public function rules()
     {
         return [
-            [['id', 'unit_number'], 'integer'],
+            [['id', 'unit_number', 'id_product'], 'integer'],
             [['acquire_date', 'expire_date'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class InventarySearch extends Inventary
             'unit_number' => $this->unit_number,
             'acquire_date' => $this->acquire_date,
             'expire_date' => $this->expire_date,
+            'id_product' => $this->id_product,
         ]);
 
         return $dataProvider;

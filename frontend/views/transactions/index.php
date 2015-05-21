@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             array(
                 'attribute' => 'total',
                 'format' => 'currency',
@@ -33,6 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             array(
                 'attribute' => 'is_venta',
                 'format' => 'raw',
+                'filter' => Html::activeDropDownList($searchModel, 'is_venta', array(
+                    ''=>'Todos',
+                    '1'=>'Ventas',
+                    '0'=>'Compras',
+                ), ['class'=>'form-control','prompt' => 'Select Category']),
                 'value' => function($value,$key)
                 {
                     return $value->is_venta? "Venta" : "Compra";
@@ -41,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]);?>
+    ]);
+    ?>
 
 </div>

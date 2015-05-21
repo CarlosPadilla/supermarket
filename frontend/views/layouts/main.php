@@ -34,13 +34,19 @@ AppAsset::register($this);
 			]);
 			if (!Yii::$app->user->isGuest) {
 				$menuItems = [
-					['label' => 'Home', 'url' => ['/site/index']],
-					['label' => 'Transactions', 'url' => ['/transactions']],
+					['label' => 'Inicio', 'url' => ['/site/index']],
+					['label' => 'Transacciones', 'url' => ['/transactions']],
 				];
-				$menuItems[] = ['label' => 'Products',
+				$menuItems[] = ['label' => 'Elementos',
 					'items' => [
-						['label' => 'Inventary', 'url' => ['/inventary']],
-						['label' => 'Products', 'url' => ['/products']],
+						['label' => 'Inventario', 'url' => ['/inventary']],
+						['label' => 'Productos', 'url' => ['/products']],
+					],
+				];
+				$menuItems[] = ['label' => 'Configuracion',
+					'items' => [
+						['label' => 'Usuarios', 'url' => ['/inventary']],
+						['label' => 'Roles', 'url' => ['/products']],
 					],
 				];
 			}
@@ -72,8 +78,8 @@ AppAsset::register($this);
 
 	<footer class="footer">
 		<div class="container">
-		<p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-		<p class="pull-right"><?= Yii::powered() ?></p>
+		<p class="pull-left">&copy; SuperMarket <?= date('Y') ?></p>
+		<!-- <p class="pull-right"><?= Yii::powered() ?></p> -->
 		</div>
 	</footer>
 

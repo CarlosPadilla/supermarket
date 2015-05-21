@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use common\models\products;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\InventarySearch */
@@ -25,7 +27,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
+            // 'id_product',
+            array(
+                'attribute' => 'id_product',
+                'format' => 'raw',
+                'filter' => Html::activeDropDownList(
+                    $searchModel,
+                    'id_product',
+                    ArrayHelper::map(
+                        Products::find()->asArray()->all(),
+                        'id',
+                        'name'
+                    ),
+                    ['class'=>'form-control','prompt' => 'Select Category']),
+                'value' => function($value,$key)
+                {
+                    return Products::findOne($value->id_product)? Products::findOne($value->id_product)->name : NULL;
+                },
+            ),
             'unit_number',
             array(
                 'attribute' => 'acquire_date',
