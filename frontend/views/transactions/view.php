@@ -19,33 +19,42 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
-    <?= DetailView::widget([
+    <!--<?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'total',
-            'is_venta',
+            [
+            'attribute' => 'is_venta',
+            'value' => $model->is_venta? 'Venta' : 'Compra',
         ],
-    ]) ?>
-    <h3>Lista de produtos</h3>
-    <ul>
+        ],
+    ]) ?> -->
+    <table class="table table-striped table-bordered detail-view">
+    <thead>
+        <tr>
+            <th>Lista de <?= $model->is_venta? 'Venta' : 'Compra';?> de Productos</th>
+            <th>Precios</th>
+        </tr>
+    </thead>
+    <tbody>
         <?php
-        foreach ($listProducts as $product) {
+        foreach ($listProducts as $key => $product) {
         ?>
-            <li>
+        <tr>
             <?php
-                echo DetailView::widget([
-                    'model' => $product,
-                    'attributes' => [
-                        'name',
-                        'price',
-                    ],
-                ]);
+
+                echo '<th>' . $product['name'] . '</th><td>$' . $product['price'] . '</td>';
             ?>
-            </li>
+        </tr>
         <?php
         }
         ?>
-    </ul>
+        </tbody>
+        <tfoot>
+            <th>Total</th>
+            <th>$<?=$model->total; ?></th>
+        </tfoot>
+    </table>
 
 </div>
