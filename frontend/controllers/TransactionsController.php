@@ -5,6 +5,8 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Transactions;
 use common\models\TransactionsSearch;
+use common\models\ListProduct;
+use common\models\Products;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -48,8 +50,24 @@ class TransactionsController extends Controller
      */
     public function actionView($id)
     {
+
+        $listProducts = listProduct::find()
+            ->asArray()
+            ->where(['id_transaction' => $id])
+            ->orderBy('id_product')
+            ->all();
+            foreach ($listProducts as $key => $value) {
+                $products = Products::find()
+                ->asArray()
+                ->where(['id' => $value['id_product']])
+                ->limit(1)
+                ->one();
+                $listProducts[$key] = array_merge($listProducts[$key], $products);
+            }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'listProducts' => $listProducts,
         ]);
     }
 
